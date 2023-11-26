@@ -160,7 +160,7 @@ DATABASE_USER=your_database_user
 DATABASE_PASSWORD=your_database_password
 DATABASE_HOST=your_database_host
 DATABASE_NAME=your_database_name
-ROUTE_DEFAULT=/api
+ROUTE_DEFAULT=/api/v1
 ```
 
 ### Running the Application
