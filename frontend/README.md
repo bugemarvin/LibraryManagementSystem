@@ -126,5 +126,5 @@ This function updates the search results based on the provided search query.
         A Promise that resolves with the response from the server.
 ```
 ## Usage
-* Call listAllBooks('all-books') to display all books on page load.
-* Use other functions like listBooksByCategory, insertBook, deleteBook, updateBook, searchBooks, and listBooksBySelectedCategory to interact with the library management system.
+* Call `listAllBooks('all-books')` to display all books on page load.
+* Use other functions like `listBooksByCategory`, `insertBook`, `deleteBook`, `updateBook`, `searchBooks`, and `listBooksBySelectedCategory` to interact with the library management system.
