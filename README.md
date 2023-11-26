@@ -10,12 +10,10 @@ Welcome to our Library Management System API Web Application! This web applicati
   - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
-    - [backend](#backend)
-      - [backend documentation](#backend-documentation)
-    - [frontend](#frontend)
-      - [frontend documentation](#frontend-documentation)
   - [Key Features](#key-features)
   - [How to Use](#how-to-use)
+  - [Backend](#backend)
+    - [Documentation](#documentation)
   - [Built With](#built-with)
   - [Setup](#setup)
     - [Requirements](#requirements)
@@ -33,7 +31,8 @@ Welcome to our Library Management System API Web Application! This web applicati
     - [List Books by Category](#list-books-by-category)
     - [Update a Book](#update-a-book)
     - [Error Handling](#error-handling)
-- [Frontend Documentation](#frontend-documentation)
+- [Frontend](#frontend)
+  - [Documentation](#documentation-1)
   - [fetchRequest Function](#fetchrequest-function)
   - [createLi Function](#createli-function)
   - [createLis Function](#createlis-function)
@@ -53,26 +52,6 @@ Welcome to our Library Management System API Web Application! This web applicati
 ## Description
 
 This web application is designed to streamline the management of library resources, providing a comprehensive set of endpoints to handle various book-related operations. Whether you're adding new books, deleting outdated entries, searching for specific titles, or updating existing details, our API has you covered.
-
-### backend
-
-The backend of the application is built using Python, Flask, and MySQL. The Flask application is configured to connect to a MySQL database, which stores information about the books in the library. The application provides a set of endpoints to perform various operations on the database, including adding, deleting, updating, and searching for books. The application also provides endpoints to retrieve statistics about the library, such as the total number of books, categories, and user counts.
-
-#### backend documentation
-
-The backend documentation provides an overview of the backend code for a library management system. The code includes functions for connecting to the database, creating API endpoints, and performing various operations on the database.
-
-**Directory:** [Backend](/backend)
-
-### frontend
-
-The frontend of the application is built using HTML, CSS, and JavaScript. The frontend code is designed to interact with the Flask server, making fetch requests to the API endpoints to perform various operations on the library database. The frontend code also provides functions to display the results of the fetch requests in the browser.
-
-#### frontend documentation
-
-The frontend documentation provides an overview of the frontend code for a library management system. The code includes functions for making fetch requests, creating and displaying list items, managing books, and interacting with a Flask server.
-
-**Directory:** [Frontend](/frontend)
 
 ## Key Features:
 
@@ -111,6 +90,16 @@ The frontend documentation provides an overview of the frontend code for a libra
 
   8. Explore Library Statistics:
         Dive into the library's statistical insights, including the total number of books, categories, and user counts.
+
+# Backend
+
+The backend of the application is built using Python, Flask, and MySQL. The Flask application is configured to connect to a MySQL database, which stores information about the books in the library. The application provides a set of endpoints to perform various operations on the database, including adding, deleting, updating, and searching for books. The application also provides endpoints to retrieve statistics about the library, such as the total number of books, categories, and user counts.
+
+#### Documentation
+
+The backend documentation provides an overview of the backend code for a library management system. The code includes functions for connecting to the database, creating API endpoints, and performing various operations on the database.
+
+**Directory:** [Backend](/backend)
 
 ## Built With
 
@@ -405,10 +394,16 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
   "message": "Resource Not Found"
 }
 ```
-# Frontend Documentation
 
-This document provides an overview of the frontend code for a library management system.
-The code includes functions for making fetch requests, creating and displaying list items, managing books, and interacting with a Flask server.
+# Frontend
+
+The frontend of the application is built using HTML, CSS, and JavaScript. The frontend code is designed to interact with the Flask server, making fetch requests to the API endpoints to perform various operations on the library database. The frontend code also provides functions to display the results of the fetch requests in the browser.
+
+## Documentation
+
+The frontend documentation provides an overview of the frontend code for a library management system. The code includes functions for making fetch requests, creating and displaying list items, managing books, and interacting with a Flask server.
+
+**Directory:** [Frontend](/frontend)
 
 ## fetchRequest Function
 
