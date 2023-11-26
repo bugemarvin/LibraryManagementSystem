@@ -147,7 +147,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```json
 
 {
-  "isbn_or_title": "1234567890"
+  "isbnOrTitle": "1234567890"
 }
 ```
 #### Example Response:
