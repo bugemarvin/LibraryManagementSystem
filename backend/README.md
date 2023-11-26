@@ -164,8 +164,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 * **Route**: `/api/v1/search`
 * **Method**: `GET`
 * **Description**: Searches for books in the library based on a query.
-* Query Parameters:
-        query: `Search term`
+* **Query Parameters**:
+        **query**: `Search term`
 ### Example Response:
 ```json
 
@@ -222,8 +222,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 * **Route**: `/api/v1/list/category`
 * **Method**: `GET`
 * **Description**: Retrieves a list of books based on a specific genre.
-* Query Parameters:
-        genre: `Book category`
+* **Query Parameters**:
+        **genre**: `Book category`
 #### Example Response:
 ```json
 
