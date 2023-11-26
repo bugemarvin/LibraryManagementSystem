@@ -64,9 +64,7 @@ The backend of the application is built using Python, Flask, and MySQL. The Flas
 
 The backend documentation provides an overview of the backend code for a library management system. The code includes functions for connecting to the database, creating API endpoints, and performing various operations on the database.
 
-##### Directory 
-
-[Backend](/backend)
+##### Directory: [Backend](/backend)
 
 ### frontend
 
@@ -76,9 +74,7 @@ The frontend of the application is built using HTML, CSS, and JavaScript. The fr
 
 The frontend documentation provides an overview of the frontend code for a library management system. The code includes functions for making fetch requests, creating and displaying list items, managing books, and interacting with a Flask server.
 
-##### Directory
-
-[Frontend](/frontend)
+##### Directory: [Frontend](/frontend)
 
 ## Key Features:
 
