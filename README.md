@@ -33,7 +33,7 @@ Welcome to our Library Management System API Web Application! This web applicati
   - [listAllBooks Function](#listallbooks-function)
   - [listBooksByCategory Function](#listbooksbycategory-function)
   - [insertBook Function](#insertbook-function)
-    - [deleteBook Function](#deletebook-function)
+  - [deleteBook Function](#deletebook-function)
   - [updateBook Function](#updatebook-function)
   - [searchBooks Function](#searchbooks-function)
   - [listBooksBySelectedCategory Function](#listbooksbyselectedcategory-function)
@@ -446,7 +446,7 @@ This function inserts a book into the library management system.
     Returns:
         A Promise that resolves with the response from the server in JSON format.
 ```
-### deleteBook Function
+## deleteBook Function
 
 This function deletes a book from the library management system.
 ```javascript
