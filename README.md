@@ -42,6 +42,34 @@ Welcome to our Library Management System API Web Application! This web applicati
   - [updatesearch Function](#updatesearch-function)
   - [Usage](#usage)
 
+## Description
+
+This web application is designed to streamline the management of library resources, providing a comprehensive set of endpoints to handle various book-related operations. Whether you're adding new books, deleting outdated entries, searching for specific titles, or updating existing details, our API has you covered.
+
+### backend
+
+The backend of the application is built using Python, Flask, and MySQL. The Flask application is configured to connect to a MySQL database, which stores information about the books in the library. The application provides a set of endpoints to perform various operations on the database, including adding, deleting, updating, and searching for books. The application also provides endpoints to retrieve statistics about the library, such as the total number of books, categories, and user counts.
+
+#### backend documentation
+
+The backend documentation provides an overview of the backend code for a library management system. The code includes functions for connecting to the database, creating API endpoints, and performing various operations on the database.
+
+##### Directory 
+
+[Backend](/backend)
+
+### frontend
+
+The frontend of the application is built using HTML, CSS, and JavaScript. The frontend code is designed to interact with the Flask server, making fetch requests to the API endpoints to perform various operations on the library database. The frontend code also provides functions to display the results of the fetch requests in the browser.
+
+#### frontend documentation
+
+The frontend documentation provides an overview of the frontend code for a library management system. The code includes functions for making fetch requests, creating and displaying list items, managing books, and interacting with a Flask server.
+
+##### Directory
+
+[Frontend](/frontend)
+
 ## Key Features:
 
   1.  Book Management:
@@ -90,6 +118,7 @@ Welcome to our Library Management System API Web Application! This web applicati
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [dotenv](https://pypi.org/project/python-dotenv/)
 
 ## Setup
 
