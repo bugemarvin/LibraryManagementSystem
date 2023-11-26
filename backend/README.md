@@ -275,7 +275,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Error Handling
-* 404 Not Found:
+* **Description**: *404 Not Found*
 ```json
 {
   "success": false,
