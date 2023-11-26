@@ -95,7 +95,7 @@ This web application is designed to streamline the management of library resourc
 
 The backend of the application is built using Python, Flask, and MySQL. The Flask application is configured to connect to a MySQL database, which stores information about the books in the library. The application provides a set of endpoints to perform various operations on the database, including adding, deleting, updating, and searching for books. The application also provides endpoints to retrieve statistics about the library, such as the total number of books, categories, and user counts.
 
-#### Documentation
+## Documentation
 
 The backend documentation provides an overview of the backend code for a library management system. The code includes functions for connecting to the database, creating API endpoints, and performing various operations on the database.
 
