@@ -54,9 +54,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 # API Endpoints
 
 ### Welcome
-* Route: `/api/v1`
-* Method: `GET`
-* Description: Welcome message for the books library system.
+* **Route**: `/api/v1`
+* **Method**: `GET`
+* **Description**: Welcome message for the books library system.
 #### Example Response:
 ```json
 {
@@ -67,9 +67,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Status
-* Route: `/api/v1/status`
-* Method: `GET`
-* Description: Returns a status message confirming that the application is running.
+* **Route**: `/api/v1/status`
+* **Method**: `GET`
+* **Description**: Returns a status message confirming that the application is running.
 #### Example Response:
 ```json
 {
@@ -83,9 +83,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Statistics
-* Route: `/api/v1/stats`
-* Method: `GET`
-* Description: Returns statistics of the library management system.
+* **Route**: `/api/v1/stats`
+* **Method**: `GET`
+* **Description**: Returns statistics of the library management system.
 #### Example Response:
 ```json
 {
@@ -115,9 +115,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Add a Book
-* Route: `/api/v1/insert`
-* Method: `POST`
-* Description: Adds a book to the library.
+* **Route**: `/api/v1/insert`
+* **Method**: `POST`
+* **Description**: Adds a book to the library.
 #### Example Request:
 ```json
 {
@@ -140,9 +140,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
     }
 ```
 ### Delete a Book
-* Route: `/api/v1/delete`
-* Method: `DELETE`
-* Description: Deletes a book from the library.
+* **Route**: `/api/v1/delete`
+* **Method**: `DELETE`
+* **Description**: Deletes a book from the library.
 * Example Request:
 ```json
 
@@ -161,9 +161,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Search Books
-* Route: `/api/v1/search`
-* Method: `GET`
-* Description: Searches for books in the library based on a query.
+* **Route**: `/api/v1/search`
+* **Method**: `GET`
+* **Description**: Searches for books in the library based on a query.
 * Query Parameters:
         query: `Search term`
 ### Example Response:
@@ -191,9 +191,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### List All Books
-* Route: `/api/v1/list`
-* Method: `GET`
-* Description: Retrieves a list of all books from the library.
+* **Route**: `/api/v1/list`
+* **Method**: `GET`
+* **Description**: Retrieves a list of all books from the library.
 ### Example Response:
 ```json
 
@@ -219,9 +219,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### List Books by Category
-* Route: `/api/v1/list/category`
-* Method: `GET`
-* Description: Retrieves a list of books based on a specific genre.
+* **Route**: `/api/v1/list/category`
+* **Method**: `GET`
+* **Description**: Retrieves a list of books based on a specific genre.
 * Query Parameters:
         genre: `Book category`
 #### Example Response:
@@ -248,9 +248,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
     }
 ```
 ### Update a Book
-* Route: `/api/v1/update`
-* Method: `PUT`
-* Description: Updates the details of a book in the library.
+* **Route**: `/api/v1/update`
+* **Method**: `PUT`
+* **Description**: Updates the details of a book in the library.
 #### Example Request:
 ```json
 
