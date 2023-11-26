@@ -69,7 +69,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ### Statistics
 * Route: `/api/v1/stats`
 * Method: `GET`
-* Description: Returns statistics of the library management system.
+* ##### Description: Returns statistics of the library management system.
 #### Example Response:
 ```json
 {
@@ -99,8 +99,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Add a Book
-* Route: /api/insert
-* Method: POST
+* Route: `/api/v1/insert`
+* Method: `POST`
 * Description: Adds a book to the library.
 #### Example Request:
 ```json
@@ -124,8 +124,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
     }
 ```
 ### Delete a Book
-* Route: /api/delete
-* Method: DELETE
+* Route: `/api/v1/delete`
+* Method: `DELETE`
 * Description: Deletes a book from the library.
 * Example Request:
 ```json
@@ -145,11 +145,11 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Search Books
-* Route: /api/search
-* Method: GET
+* Route: `/api/v1/search`
+* Method: `GET`
 * Description: Searches for books in the library based on a query.
 * Query Parameters:
-        * query: Search term
+        * query: `Search term`
 ### Example Response:
 ```json
 
@@ -175,8 +175,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### List All Books
-* Route: /api/list
-* Method: GET
+* Route: `/api/v1/list`
+* Method: `GET`
 * Description: Retrieves a list of all books from the library.
 ### Example Response:
 ```json
@@ -203,8 +203,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### List Books by Category
-* Route: /api/list/category
-* Method: GET
+* Route: `/api/v1/list/category`
+* Method: `GET`
 * Description: Retrieves a list of books based on a specific genre.
 * Query Parameters:
         * genre: Book category
@@ -232,8 +232,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
     }
 ```
 ### Update a Book
-* Route: /api/update
-* Method: PUT
+* Route: `/api/v1/update`
+* Method: `PUT`
 * Description: Updates the details of a book in the library.
 #### Example Request:
 ```json
