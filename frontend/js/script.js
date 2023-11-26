@@ -21,7 +21,6 @@ const fetchRequest = (path, ReqType, jsonData) => {
       method: ReqType,
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*'
       },
       body: ReqType === 'GET' ? null : JSON.stringify(jsonData)
@@ -232,7 +231,7 @@ const updateBook = () => {
   const year = document.getElementById('yearUpdate').value;
   const synopsis = document.getElementById('synopsisUpdate').value;
   const copiesAvailable = document.getElementById('copiesAvailableUpdate').value;
-  const jsonData = {title, author, genre, isbn, year, synopsis, copiesAvailable};
+  const jsonData = { title, author, genre, isbn, year, synopsis, copiesAvailable };
   fetchRequest('update', 'PUT', jsonData)
     .then((response) => {
       if (response.success) {
