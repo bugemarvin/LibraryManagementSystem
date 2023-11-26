@@ -38,7 +38,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ## API Endpoints
 
 ### Welcome
-* Route: /api/
+* Route: /api/v1
 * Method: GET
 * Description: Welcome message for the books library system.
 #### Example Response:
