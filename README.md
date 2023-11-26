@@ -63,8 +63,8 @@ This web application is designed to streamline the management of library resourc
 
   2.  Library Statistics:\
         **Total Number of Books:** *Retrieve insights into the overall size of the library collection.*\
-        **Categories:** *Explore the diverse range of `book genres` available in the library.*\
-        **User Counts:** *Obtain statistics on library usage, including `user counts` for a better understanding of engagement.*
+        **Categories:** *Explore the diverse range of book genres available in the library.*\
+        **User Counts:** *Obtain statistics on library usage, including user counts for a better understanding of engagement.*
 
 ## How to Use:
   1. List All Books:
