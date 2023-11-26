@@ -33,9 +33,7 @@ python app.py or flask run
 
 The application will be accessible at http://127.0.0.1:5000/ by default.
 
-# API Documentation
-
-## API Endpoints
+# API Endpoints
 
 ### Welcome
 * Route: `/api/v1`
