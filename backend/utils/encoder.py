@@ -1,33 +1,31 @@
 import base64
 
+
 class Encoder:
+    """
+    This class provides methods for encoding and decoding strings using base64 encoding.
+    """
+
+    def encode(self, string):
         """
-        This class provides methods for encoding and decoding strings using base64 encoding.
+        Encodes the given string using base64 encoding.
+
+        Args:
+                string (str): The string to be encoded.
+
+        Returns:
+                str: The encoded string.
         """
+        return base64.b64encode(string.encode('ascii'))
 
-        def __init__(self):
-                pass
+    def decode(self, string):
+        """
+        Decodes the given string using base64 decoding.
 
-        def encode(self, string):
-                """
-                Encodes the given string using base64 encoding.
+        Args:
+                string (str): The string to be decoded.
 
-                Args:
-                        string (str): The string to be encoded.
-
-                Returns:
-                        str: The encoded string.
-                """
-                return base64.b64encode(string.encode('ascii'))
-
-        def decode(self, string):
-                """
-                Decodes the given string using base64 decoding.
-
-                Args:
-                        string (str): The string to be decoded.
-
-                Returns:
-                        str: The decoded string.
-                """
-                return base64.b64decode(string.decode('ascii'))
+        Returns:
+                str: The decoded string.
+        """
+        return base64.b64decode(string.decode('ascii'))

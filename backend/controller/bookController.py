@@ -3,12 +3,27 @@ from flask import jsonify, request
 from datetime import datetime
 
 # Define the Book model
+
+
 class BookController():
     def count():
+        """
+        Counts the total number of books in the library.
+
+        Returns:
+            int: The total number of books.
+        """
         count = Book.query.count()
         return count
 
     def insert():
+        """
+        Inserts a new book into the library.
+
+        Returns:
+            tuple: A tuple containing the success status, HTTP status code, and a message.
+        """
+
         # get form data in json format
         data = request.get_json()
         title = data['title']
@@ -18,8 +33,8 @@ class BookController():
         years = data['year']
         synopsis = data['synopsis']
         copiesAvailable = data['copiesAvailable']
-        dateAdded=datetime.utcnow()
-        dateModified=datetime.utcnow()
+        dateAdded = datetime.utcnow()
+        dateModified = datetime.utcnow()
         # converting the date from a string to a date object
         year = int(years)
         copiesAvailable = int(copiesAvailable)
@@ -59,11 +74,19 @@ class BookController():
             return jsonify({"success": True, "status": 201, "message": "The book has been added to the Library"}), 201
 
     def delete():
+        """
+        Deletes a book from the library.
+
+        Returns:
+            tuple: A tuple containing the success status, HTTP status code, and a message.
+        """
+
         # get the title or isbn from the request body
         data = request.get_json()
         info = data['isbn_or_title']
         try:
-            data = Book.query.filter_by(title=info).first() or Book.query.filter_by(isbn=info).first()
+            data = Book.query.filter_by(title=info).first(
+            ) or Book.query.filter_by(isbn=info).first()
             Book.delete(data)
             return jsonify({"success": True, "status": 201, "message": "The book has been deleted"}), 201
         except:
@@ -73,32 +96,58 @@ class BookController():
             return jsonify({"success": False, "status": 404, "message": "The book is not in the Library by the title or isbn of {}".format(info)}), 404
 
     def searchAll():
+        """
+        Searches for books in the library based on a query.
+
+        Returns:
+            tuple: A tuple containing the success status, HTTP status code, a list of books, and the count of books.
+        """
+
+        # Get response in json
         info = request.args.get('query')
-        books = Book.query.filter(Book.title.ilike(f'%{info}%') | Book.author.ilike(f'%{info}%') | Book.isbn.ilike(f'%{info}%') | Book.year.ilike(f'%{info}%')).all()
+        # Query the book by the title, author, or genre
+        books = Book.query.filter(Book.title.ilike(f'%{info}%') | Book.author.ilike(
+            f'%{info}%') | Book.isbn.ilike(f'%{info}%') | Book.year.ilike(f'%{info}%')).all()
+        # checking the requested book is in the database
         if not books:
             count = BookController.count()
             if count == 0:
                 return jsonify({"success": False, "status": 204, "message": "There are no books found in the library's database"}), 404
             return jsonify({"success": False, "status": 404, "message": "There are no books in the library by the requested search term {}".format(info)}), 404
         books_json = [{"id": book.id, "title": book.title, "author": book.author, "genre": book.genre, "isbn": book.isbn,
-                   "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
+                       "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
         return jsonify({"success": True, "status": 200, "message": books_json, 'count': len(books_json)}), 200
 
     def search():
+        """
+        Searches for books in the library based on a query.
+
+        Returns:
+            tuple: A tuple containing the success status, HTTP status code, a list of books, and the count of books.
+        """
+
         if request.args.get(''):
             return jsonify({"success": False, "status": 400, "message": "Please provide a search term"}), 400
         data = request.args.get('query')
-        books = Book.query.filter(Book.title.ilike(f'%{data}%') | Book.author.ilike(f'%{data}%') | Book.genre.ilike(f'%{data}%')).all()
+        books = Book.query.filter(Book.title.ilike(f'%{data}%') | Book.author.ilike(
+            f'%{data}%') | Book.genre.ilike(f'%{data}%')).all()
         if not books:
             count = BookController.count()
             if count == 0:
                 return jsonify({"success": False, "status": 204, "message": "There are no books found in the library's database"}), 404
             return jsonify({"success": False, "status": 404, "message": "There are no books in the library by the requested search term {}".format(data)}), 404
         books_json = [{"id": book.id, "title": book.title, "author": book.author, "genre": book.genre, "isbn": book.isbn,
-                   "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
+                       "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
         return jsonify({"success": True, "status": 200, "message": books_json, 'count': len(books_json)}), 200
 
     def listAll():
+        """
+        Lists all the books in the library.
+
+        Returns:
+            tuple: A tuple containing the success status, HTTP status code, a list of books, and the count of books.
+        """
+
         # Query all books
         books = Book.query.all()
         # check if there are no books
@@ -109,11 +158,18 @@ class BookController():
             return jsonify({"success": False, "status": 404, "message": "Books not found"}), 404
         # Convert the list of books to a JSON format
         books_json = [{"id": book.id, "title": book.title, "author": book.author, "genre": book.genre, "isbn": book.isbn,
-                   "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
+                       "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
         # Return the list as a JSON response
-        return jsonify({"success": True, "status": 200, 'message': books_json, 'count': len(books_json) }), 200
+        return jsonify({"success": True, "status": 200, 'message': books_json, 'count': len(books_json)}), 200
 
     def listAllCategory():
+        """
+        Lists all the books in the library based on a specific genre.
+
+        Returns:
+            tuple: A tuple containing the success status, HTTP status code, a list of books, and the count of books.
+        """
+
         # Get response in json
         genres = request.args.get('genre')
         # Query the book by the genre
@@ -126,7 +182,7 @@ class BookController():
             return jsonify({"success": False, "status": 404, "message": "There are no books in the library for the requested category of {}".format(genres)}), 404
         # Convert the list of books to a JSON format
         books_json = [{"id": book.id, "title": book.title, "author": book.author, "genre": book.genre, "isbn": book.isbn,
-                   "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
+                       "year": str(book.year), "synopsis": book.synopsis, "copiesAvailable": book.copiesAvailable, "dateAdded": book.dateAdded, "dateModifide": book.dateModified} for book in books]
         if len(books_json) == 0:
             return jsonify({"success": False, "status": 404, "message": "There are no books in the library for the requested category of {}".format(genres)}), 404
         else:
@@ -134,6 +190,12 @@ class BookController():
             return jsonify({"success": True, "status": 200, "message": books_json, 'count': len(books_json)}), 200
 
     def countCategory():
+        """
+        Counts the number of unique book categories in the library.
+
+        Returns:
+            int: The number of unique book categories.
+        """
         bookCategories = set()
         books = Book.query.all()
         for book in books:
@@ -141,6 +203,12 @@ class BookController():
         return len(bookCategories)
 
     def bookCategory():
+        """
+        Retrieves a list of all the book categories in the library.
+
+        Returns:
+            list: A list of book categories.
+        """
         bookCategories = set()
         books = Book.query.all()
         for book in books:
@@ -148,7 +216,12 @@ class BookController():
         return list(bookCategories)
 
     def updates():
-        # get form data in json format
+        """
+        Updates the details of a book in the library.
+
+        Returns:
+            tuple: A tuple containing the success status, HTTP status code, and a message.
+        """
         data = request.get_json()
         title = data['title']
         author = data['author']
@@ -157,7 +230,7 @@ class BookController():
         years = data['year']
         synopsis = data['synopsis']
         copiesAvailable = data['copiesAvailable']
-        dateModified=datetime.utcnow()
+        dateModified = datetime.utcnow()
         # converting the date from a string to a date object
         year = int(years)
         copiesAvailable = int(copiesAvailable)
@@ -166,15 +239,15 @@ class BookController():
         bookCreatedDate = book.dateAdded
 
         if book:
-            book.title=title
-            book.author=author
-            book.genre=genre
-            book.isbn=isbn
-            book.year=year
-            book.synopsis=synopsis
-            book.copiesAvailable=copiesAvailable
-            book.dateAdded=bookCreatedDate
-            book.dateModified=dateModified
+            book.title = title
+            book.author = author
+            book.genre = genre
+            book.isbn = isbn
+            book.year = year
+            book.synopsis = synopsis
+            book.copiesAvailable = copiesAvailable
+            book.dateAdded = bookCreatedDate
+            book.dateModified = dateModified
             Book.update()
             return jsonify({"success": True, "status": 201, "message": "The book has been updated in the Library"}), 201
         else:
