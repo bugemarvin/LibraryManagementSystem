@@ -55,16 +55,16 @@ This web application is designed to streamline the management of library resourc
 
 ## Key Features:
 
-  1.  Book Management:
+  1.  Book Management:\
         **Adding Books:** *Easily insert new books into the library database, ensuring accurate and up-to-date information.*\
         **Deleting Books:** *Remove outdated or unnecessary books from the library inventory with a simple deletion process.*\
         **Searching Books:** *Efficiently search for specific **titles** or **topics** within the library's extensive collection.*\
         **Updating Book Details:** *Keep book information current by updating details such as **title**, **author**, **genre**, and **more**.*
 
-  2.  Library Statistics:
-        Total Number of Books: Retrieve insights into the overall size of the library collection.
-        Categories: Explore the diverse range of book genres available in the library.
-        User Counts: Obtain statistics on library usage, including user counts for a better understanding of engagement.
+  2.  Library Statistics:\
+        **Total Number of Books:** *Retrieve insights into the overall size of the library collection.*\
+        **Categories:** *Explore the diverse range of `book genres` available in the library.*\
+        **User Counts:** *Obtain statistics on library usage, including `user counts` for a better understanding of engagement.*\
 
 ## How to Use:
   1. List All Books:
