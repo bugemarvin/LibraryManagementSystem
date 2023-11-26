@@ -8,7 +8,7 @@ Welcome to our Library Management System API Web Application! This web applicati
   - [Table of Contents](#table-of-contents)
   - [Key Features](#key-features)
   - [How to Use](#how-to-use)
-    - [Built With](#built-with)
+  - [Built With](#built-with)
   - [Setup](#setup)
     - [Requirements](#requirements)
     - [Activate the virtual environment](#activate-the-virtual-environment)
@@ -80,7 +80,7 @@ Welcome to our Library Management System API Web Application! This web applicati
   8. Explore Library Statistics:
         Dive into the library's statistical insights, including the total number of books, categories, and user counts.
 
-### Built With
+## Built With
 
 * [Python](https://www.python.org/)
 * [Flask](https://flask.palletsprojects.com/en/2.0.x/)
