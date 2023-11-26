@@ -6,7 +6,24 @@ This Flask application serves as a backend for a Library Management System API. 
 
 ### Requirements
 
-Make sure you have the required Python packages installed. You can install them using the provided `requirements.txt` file.
+Make sure you have Python installed on your system. Then, create and activate a virtual environment.
+
+# Create a virtual environment
+```bash
+python -m venv venv
+```
+
+## Activate the virtual environment
+### On Windows
+```bash
+venv\Scripts\activate
+```
+### On macOS/Linux
+```bash
+source venv/bin/activate
+```
+
+Install the required Python packages using the provided `requirements.txt` file:
 
 ```bash
 pip install -r requirements.txt
