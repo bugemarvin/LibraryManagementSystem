@@ -1,7 +1,6 @@
-# Library Management System API
+# Library Management System
 
-This is a Flask application serves as a Library Management System API. It endpoints to manage books in the library, including adding, deleting, searching, and updating book details. Additionally, the API offers routes to retrieve statistics about the library, such as the total number of books, categories, and user counts.
-
+This is a web application that serves as a library management system. It allows users to add, delete, search, and update books in the library. Additionally, the application offers routes to retrieve statistics about the library, such as the total number of books, categories, and user counts.
 
 ## Table of Contents
 
