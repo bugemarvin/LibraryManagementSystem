@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="Library">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Library">
+    <title>Library - Book Management System</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="./logo.png" width="70" height="70" class="d-inline-block align-top" alt="Logo">
+            </a>
+        </nav>
+
+        <!-- Form to insert a new book -->
+        <h2 class="mt-4">Insert a New Book</h2>
+        <form>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" class="form-control" placeholder="Enter book Title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" class="form-control" placeholder="Enter book Author" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" class="form-control" placeholder="Enter book Genre" required>
+            </div>
+            <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" class="form-control" placeholder="Enter book ISBN" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year:</label>
+                <input type="month" id="year" class="form-control" placeholder="Enter book Year" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Synopsis:</label>
+                <input type="text" id="synopsis" class="form-control" placeholder="Enter book Synopsis" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Copies:</label>
+                <input type="number" id="copiesAvailable" class="form-control" required>
+            </div>
+            <br/>
+            <ul id="insert-book" class="list-group"></ul>
+            <br/>
+            <button type="button" class="btn btn-primary" onclick="insertBook()">Insert Book</button>
+        </form>
+
+        <!-- Add to select the category -->
+        <div class="form-group mt-3">
+            <label for="category">Select Category:</label>
+            <input type="text" id="category" class="form-control" placeholder="Enter book Synopsis" required>
+            <br/>
+            <ul id="category-books" class="list-group"></ul>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="listBooksBySelectedCategory()">List Books</button>
+
+        <!-- Form to delete a book -->
+        <h2 class="mt-4">Delete a Book</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="isbn_or_title">ISBN or Title:</label>
+                <input type="text" id="isbn_or_title" class="form-control" placeholder="Enter book title of ISBN to Delete" required>
+                <br/>
+                <ul id="delete-book" class="list-group"></ul>
+            </div>
+            <br/>
+            <button type="button" class="btn btn-danger" onclick="deleteBook()">Delete Book</button>
+        </form>
+
+        <!-- List of Books -->
+        <h2 class="mt-4">List of Books</h2>
+        <ul id="all-books" class="list-group"></ul>
+
+        <!-- update a book -->
+        <h2 class="mt-4">Update a Book</h2>
+        <form>
+            <div class="form-group">
+                <input type="text" id="searchupdate" class="form-control" placeholder="Search book to update" required>
+                <br/>
+                <ul id="searchUpdate-book" class="list-group"></ul>
+                <br/>
+                <button type="button" class="btn btn-secondary" onclick="updatesearch()">Get book</button>
+            </div>
+        </form>
+        <form class="form-group" id="updateDetails">
+        </form>
+        <ul id="update-book" class="list-group"></ul>
+    </div>
+</body>
+</html>

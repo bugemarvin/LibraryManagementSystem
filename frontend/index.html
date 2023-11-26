@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="description" content="Library">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Library">
+    <title>Library - Book Management System</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <a class="navbar-brand" href="/frontend">
+            <img src="./logo.png" width="70" height="70" class="d-inline-block align-top" alt="Logo">
+        </a>
+        <form>
+            <div class="form-group d-flex flex-row">
+                <input type="text" id="searchQuery" class="form-control" placeholder="Search a book by Title, Author, Genre" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="searchBooks()">Search</button>
+        </form>
+        <br/>
+        <ul id="search-book" class="search"></ul>
+    </div>
+</body>
+</html>
