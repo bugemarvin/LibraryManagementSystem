@@ -41,7 +41,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 * Route: /api/
 * Method: GET
 * Description: Welcome message for the books library system.
-* Example Response:
+#### Example Response:
 ```json
 {
     "success": true,
@@ -54,7 +54,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 * Route: /api/status
 * Method: GET
 * Description: Returns a status message confirming that the application is running.
-* Example Response:
+#### Example Response:
 ```json
 {
   "success": true,
@@ -70,7 +70,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 * Route: /api/stats
 * Method: GET
 * Description: Returns statistics of the library management system.
-* Example Response:
+#### Example Response:
 ```json
 {
   "success": true,
@@ -102,7 +102,7 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 * Route: /api/insert
 * Method: POST
 * Description: Adds a book to the library.
-* Example Request:
+#### Example Request:
 ```json
 {
   "title": "Sample Book",
