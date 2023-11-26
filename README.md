@@ -1,11 +1,21 @@
 # Library Management System
 
+## Overview
+
 Welcome to our Library Management System API Web Application! This web application is designed to streamline the management of library resources, providing a comprehensive set of endpoints to handle various book-related operations. Whether you're adding new books, deleting outdated entries, searching for specific titles, or updating existing details, our API has you covered.
 
 ## Table of Contents
 
 - [Library Management System API](#library-management-system-api)
+  - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+    - [backend](#backend)
+      - [backend documentation](#backend-documentation)
+        - [Directory](#directory)
+    - [frontend](#frontend)
+      - [frontend documentation](#frontend-documentation)
+        - [Directory](#directory-1)
   - [Key Features](#key-features)
   - [How to Use](#how-to-use)
   - [Built With](#built-with)
