@@ -83,14 +83,14 @@ class BookController():
 
         # get the title or isbn from the request body
         data = request.get_json()
-        info = data['isbn_or_title']
+        info = data['isbnOrTitle']
         try:
             data = Book.query.filter_by(title=info).first(
             ) or Book.query.filter_by(isbn=info).first()
             Book.delete(data)
             return jsonify({"success": True, "status": 201, "message": "The book has been deleted"}), 201
         except:
-            count = Book.count()
+            count = BookController.count()
             if count == 0:
                 return jsonify({"success": True, "status": 204, "message": "There are no books in the library's database by the requested title or Isbn"}), 404
             return jsonify({"success": False, "status": 404, "message": "The book is not in the Library by the title or isbn of {}".format(info)}), 404
