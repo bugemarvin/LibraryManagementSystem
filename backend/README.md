@@ -13,12 +13,12 @@ Make sure you have Python installed on your system. Then, create and activate a 
 python -m venv venv
 ```
 
-## Activate the virtual environment
-### On Windows
+### Activate the virtual environment
+#### On Windows
 ```bash
 venv\Scripts\activate
 ```
-### On macOS/Linux
+#### On macOS/Linux
 ```bash
 source venv/bin/activate
 ```
@@ -30,7 +30,8 @@ pip install -r requirements.txt
 ```
 
 ### Database Configuration 
-Set up your MySQL database by configuring the environment variables in a `.env` file. Specify the database user, password, host, name, and the default route.
+Set up your MySQL database by configuring the environment variables in a `.env` file.\
+Specify the database `user`, `password`, `host`, `name`, and the `default route`.
 
 ```env
 DATABASE_USER=your_database_user
