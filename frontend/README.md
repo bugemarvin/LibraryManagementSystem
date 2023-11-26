@@ -57,7 +57,7 @@ This function fetches and displays all books.
 ## listBooksByCategory Function
 
 This function fetches and displays books by category.
-```
+```javascript
     Parameters:
         category (string): The category of books to fetch.
         id (string): The ID of the element to display the books in.
