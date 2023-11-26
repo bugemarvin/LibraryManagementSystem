@@ -42,6 +42,21 @@ This is a Flask application serves as a Library Management System API. It endpoi
   - [updatesearch Function](#updatesearch-function)
   - [Usage](#usage)
 
+## About the Project
+
+This is a Flask application serves as a Library Management System API. It endpoints to manage books in the library, including adding, deleting, searching, and updating book details. Additionally, the API offers routes to retrieve statistics about the library, such as the total number of books, categories, and user counts.
+
+### Built With
+
+* [Python](https://www.python.org/)
+* [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+* [MySQL](https://www.mysql.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
 ## Setup
 
 ### Requirements
