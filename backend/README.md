@@ -38,9 +38,9 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ## API Endpoints
 
 ### Welcome
-* Route: /api/v1
-* Method: GET
-* Description: Welcome message for the books library system.
+* Route: `/api/v1`
+* Method: `GET`
+* Description: > Welcome message for the books library system.
 #### Example Response:
 ```json
 {
@@ -51,8 +51,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Status
-* Route: /api/status
-* Method: GET
+* Route: `/api/v1/status`
+* Method: `GET`
 * Description: Returns a status message confirming that the application is running.
 #### Example Response:
 ```json
@@ -67,8 +67,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 ```
 
 ### Statistics
-* Route: /api/stats
-* Method: GET
+* Route: `/api/v1/stats`
+* Method: `GET`
 * Description: Returns statistics of the library management system.
 #### Example Response:
 ```json
