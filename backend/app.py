@@ -4,10 +4,13 @@ from routes.bookRoutes import BookRoutes
 from routes.route import Routes
 from routes.userRoutes import UserRoutes
 from models.user import db
+from utils.redis import redis
 from flask_migrate import Migrate
 from dotenv import load_dotenv
-from flask_jwt_extended import JWTManager, jwt_required
+from flask_jwt_extended import jwt_required, get_jwt
+from controller.userController import jwt
 import os
+from datetime import timedelta
 
 # initialize the flask app
 app = Flask(__name__)
@@ -19,7 +22,7 @@ load_dotenv()
 # Get environment variables
 userName = os.getenv('DATABASE_USER')
 userPassword = os.getenv('DATABASE_PASSWORD')
-host = os.getenv('DATABASE_HOST')
+host = os.getenv('HOST')
 dataBaseName = os.getenv('DATABASE_NAME')
 routeDefault = os.getenv('ROUTE_DEFAULT')
 secretKey = os.getenv('SECRET_KEY')
@@ -31,7 +34,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 migrate = Migrate(app, db)
 app.config['JWT_SECRET_KEY'] = secretKey
-jwt = JWTManager(app)
+jwt.init_app(app)
 
 with app.app_context():
     db.create_all()
@@ -168,9 +171,12 @@ def register():
 def getuser():
     return UserRoutes.getUser()
 
-@app.route(defaultRoute + "/logout", methods=["GET"])
+@app.route(defaultRoute + "/logout", methods=["DELETE"])
 @jwt_required()
 def logout():
+    jti = get_jwt()['tokens']
+    timeExpiration = timedelta(hours=2)
+    redis.set(jti, ex=timeExpiration)
     return UserRoutes.logoutUser()
 
 '''

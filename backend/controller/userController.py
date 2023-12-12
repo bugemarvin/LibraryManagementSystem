@@ -3,7 +3,9 @@ from models.user import User
 from utils.token import Token
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, JWTManager
+
+jwt = JWTManager()
 
 class UserController:
         def count():
@@ -39,21 +41,21 @@ class UserController:
                         return jsonify({'sucess': True, 'status': 400, 'message': 'Password is required'}), 400
 
                 user = User(
-                        firstName,
-                        middleName,
-                        lastName,
-                        emailAddress,
-                        phoneNumber,
-                        password,
-                        role,
-                        dateCreated,
-                        dateModified,
-                        location,
-                        status,
-                        confirmed,
-                        confirmedOn,
-                        token,
-                        photos
+                        firstName=firstName,
+                        middleName=middleName,
+                        lastName=lastName,
+                        emailAddress=emailAddress,
+                        phoneNumber=phoneNumber,
+                        password=password,
+                        role=role,
+                        dateCreated=dateCreated,
+                        dateModified=dateModified,
+                        location=location,
+                        status=status,
+                        confirmed=confirmed,
+                        confirmedOn=confirmedOn,
+                        token=token,
+                        photos=photos
                 )
 
                 if user is None:
@@ -97,35 +99,25 @@ class UserController:
         def getUsers():
                 token = UserController.token()
                 user = User.query.filter_by(emailAddress=token).first() or User.query.filter_by(phoneNumber=token).first()
-                users = {
-                        'id': user.id,
-                        'firstName': user.firstName,
-                        'middleName': user.middleName,
-                        'lastName': user.lastName,
-                        'emailAddress': user.emailAddress,
-                        'phoneNumber': user.phoneNumber,
-                        'role': user.role,
-                        'dateCreated': user.dateCreated,
-                        'dateModified': user.dateModified,
-                        'location': user.location,
-                        'status': user.status,
-                        'confirmed': user.confirmed,
-                        'confirmedOn': user.confirmedOn,
-                        'token': user.token,
-                        'photos': user.photos
-                }
-                return jsonify({'sucess': True, 'status': 200, 'message': 'User logged in successfully', 'user': users}), 200
-
-        def role():
-                user = UserController.getUser()
-                return user.role
-
-        def user():
-                user = UserController.getUser()
-                return user.firstName + ' ' + user.lastName
+                user_json = {
+                                'id': user.id,
+                                'firstName': user.firstName,
+                                'middleName': user.middleName,
+                                'lastName': user.lastName,
+                                'emailAddress': user.emailAddress,
+                                'phoneNumber': user.phoneNumber,
+                                'role': user.role,
+                                'dateCreated': user.dateCreated,
+                                'dateModified': user.dateModified,
+                                'location': user.location,
+                                'status': user.status,
+                                'confirmed': user.confirmed,
+                                'confirmedOn': user.confirmedOn,
+                                'token': user.token,
+                                'photos': user.photos
+                                }
+                return jsonify({'sucess': True, 'status': 200, 'user': user_json}), 200
 
         def logout():
-                user = UserController.getUser()
-                user.token = None
-                User.update()
-                return jsonify({'sucess': True, 'status': 200, 'message': 'User logged out successfully'}), 200
+                token = UserController.token()
+                return jsonify({'sucess': True, 'status': 200, 'message': 'User logged out successfully', 'user': users}), 200
