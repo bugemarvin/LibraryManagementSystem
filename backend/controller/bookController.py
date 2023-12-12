@@ -1,10 +1,9 @@
 from models.book import Book
 from flask import jsonify, request
 from datetime import datetime
+# from controller.userController import UserController
 
-# Define the Book model
-
-
+# Define the Book model controller
 class BookController():
     def count():
         """
@@ -35,6 +34,8 @@ class BookController():
         copiesAvailable = data['copiesAvailable']
         dateAdded = datetime.utcnow()
         dateModified = datetime.utcnow()
+        # createdByUser = UserController.user
+        # createdByUserRole = UserController.role
         # converting the date from a string to a date object
         year = int(years)
         copiesAvailable = int(copiesAvailable)
@@ -68,7 +69,9 @@ class BookController():
                 synopsis=synopsis,
                 copiesAvailable=copiesAvailable,
                 dateAdded=dateAdded,
-                dateModified=dateModified
+                dateModified=dateModified,
+                # createdByUser=createdByUser,
+                # createdByUserRole=createdByUserRole
             )
             Book.insert(book)
             return jsonify({"success": True, "status": 201, "message": "The book has been added to the Library"}), 201
@@ -154,7 +157,7 @@ class BookController():
         if not books:
             count = BookController.count()
             if count == 0:
-                return jsonify({"success": False, "status": 204, "message": "There are no books found in the library's database"}), 404
+                return jsonify({"success": False, "status": 204, "message": "There are no books found in the library's database"}), 204
             return jsonify({"success": False, "status": 404, "message": "Books not found"}), 404
         # Convert the list of books to a JSON format
         books_json = [{"id": book.id, "title": book.title, "author": book.author, "genre": book.genre, "isbn": book.isbn,
@@ -231,6 +234,8 @@ class BookController():
         synopsis = data['synopsis']
         copiesAvailable = data['copiesAvailable']
         dateModified = datetime.utcnow()
+        # modifiedBy = UserController.user
+        # modifiedByUserRole = UserController.role
         # converting the date from a string to a date object
         year = int(years)
         copiesAvailable = int(copiesAvailable)
@@ -248,6 +253,8 @@ class BookController():
             book.copiesAvailable = copiesAvailable
             book.dateAdded = bookCreatedDate
             book.dateModified = dateModified
+            # book.modifiedBy = modifiedBy
+            # book.modifiedByUserRole = modifiedByUserRole
             Book.update()
             return jsonify({"success": True, "status": 201, "message": "The book has been updated in the Library"}), 201
         else:

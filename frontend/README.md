@@ -1,6 +1,6 @@
 # Frontend Documentation
 
-This document provides an overview of the frontend code for a library management system.
+This document provides an overview of the frontend code for a library management system for testing purposes.
 The code includes functions for making fetch requests, creating and displaying list items, managing books, and interacting with a Flask server.
 
 ## fetchRequest Function

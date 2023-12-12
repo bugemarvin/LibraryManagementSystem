@@ -6,7 +6,7 @@ class Encoder:
     This class provides methods for encoding and decoding strings using base64 encoding.
     """
 
-    def encode(self, string):
+    def encode(string):
         """
         Encodes the given string using base64 encoding.
 
@@ -18,7 +18,7 @@ class Encoder:
         """
         return base64.b64encode(string.encode('ascii'))
 
-    def decode(self, string):
+    def decode(string):
         """
         Decodes the given string using base64 decoding.
 

@@ -14,7 +14,7 @@
  * @returns {Promise} A promise that resolves with the response data or rejects with an error.
  */
 const fetchRequest = (path, ReqType, jsonData) => {
-  const url = `http://127.0.0.1:5000/api/v1/${path}`;
+  const url = `http://127.0.0.1:1245/api/v1/${path}`;
 
   return new Promise((resolve, reject) => {
     fetch(url, {
@@ -39,11 +39,56 @@ const fetchRequest = (path, ReqType, jsonData) => {
  */
 const createLi = (id, data) => {
   const li = document.createDocumentFragment();
+  if (document.getElementById(id).hasChildNodes()) {
+    document.getElementById(id).innerHTML = '';
+  }
   const listItem = document.createElement('li');
   listItem.textContent = data;
   li.appendChild(listItem);
   const info = document.getElementById(id).appendChild(li);
   return info;
+};
+
+const displaySuccess = (id, message) => {
+  const success = document.getElementById(id);
+  success.classList.add('list-group', 'alert', 'alert-success');
+  success.innerHTML = '';
+  success.innerHTML = message;
+  success.style.textAlign = 'center';
+  success.style.padding = '10px';
+  success.style.color = 'white'
+  success.style.fontWeight = 'bold';
+  success.style.width = '50%';
+  success.style.margin = 'auto';
+};
+
+const displayFormInput = (id) => {
+  const forms = document.getElementById(id);
+  const inputs = forms.getElementsByTagName('input');
+  for (let i = 0; inputs.length; i++) {
+    inputs[i].style.border = '1px solid red';
+  }
+}
+
+const displayFormInputSuccess = (id) => {
+  const forms = document.getElementById(id);
+  const inputs = forms.getElementsByTagName('input');
+  for (let i = 0; inputs.length; i++) {
+    inputs[i].style.border = '1px solid green';
+  }
+}
+
+const displayError = (id, message) => {
+  const error = document.getElementById(id);
+  error.classList.add('list-group', 'alert', 'alert-danger');
+  error.innerHTML = '';
+  error.innerHTML = message;
+  error.style.textAlign = 'center';
+  error.style.padding = '10px';
+  error.style.color = 'white';
+  error.style.fontWeight = 'bold';
+  error.style.width = '50%';
+  error.style.margin = 'auto';
 };
 
 /**
@@ -60,7 +105,7 @@ const createLi = (id, data) => {
  */
 const createLis = (data) => {
   const li = document.createElement('li');
-  li.innerHTML = `<strong>${data.title}</strong><br>Author: ${data.author}<br>Genre: ${data.genre}<br>ISBN: ${data.isbn}<br>Year: ${data.year}<br>Copies Available: ${data.copiesAvailable}<br>Synopsis: ${data.synopsis}<br><br>`;
+  li.innerHTML = `<strong>${data.title}</strong><br><b>Author:</b> ${data.author}<br><b>Genre:</b> ${data.genre}<br><b>ISBN:</b> ${data.isbn}<br><b>Year:</b> ${data.year}<br><b>Copies Available:</b> ${data.copiesAvailable}<br><b>Synopsis:</b> ${data.synopsis}<br><br>`;
   return li;
 };
 
@@ -71,6 +116,8 @@ const createLis = (data) => {
  */
 const displayBooky = (id, books) => {
   const container = document.getElementById(id);
+
+  container.innerHTML = '';
   books.forEach((book) => {
     const listItem = createLis(book);
     container.appendChild(listItem);
@@ -109,7 +156,7 @@ const listAllBooks = (all) => {
  * @returns {Promise} - A promise that resolves with the response from the server.
  */
 const listBooksByCategory = (category, id) => {
-  fetchRequest(`list/category?genre=${category}`, 'GET')
+  fetchRequest(`list/category?genre=${encodeURIComponent(category)}`, 'GET')
     .then((response) => {
       if (response.success) {
         displayBooky(id, response.message);
@@ -141,10 +188,11 @@ const insertBook = () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const genre = document.getElementById('genre').value;
-  const isbn = document.getElementById('isbn').value;
+  const isbns = document.getElementById('isbn').value;
   const year = document.getElementById('year').value;
   const synopsis = document.getElementById('synopsis').value;
   const copiesAvailable = document.getElementById('copiesAvailable').value;
+  const isbn = encodeURIComponent(isbns);
 
   // Validate form data
   if (!title || !author || !genre || !isbn || !year || !synopsis || !copiesAvailable) {
@@ -274,7 +322,10 @@ const searchBooks = () => {
 };
 
 // Getting all the books from the database
-listAllBooks('all-books');
+window.addEventListener('load', () => {
+  const listBooks = document.getElementById('all-books');
+  if (listBooks) listAllBooks('all-books');
+});
 
 /**
  * Lists books by the selected category.
@@ -294,7 +345,30 @@ const listBooksBySelectedCategory = () => {
  */
 const formInput = (data) => {
   const li = document.getElementById('updateDetails');
-  li.innerHTML = `<div class="form-group"><label for="Data">Title:</label><input type="text" id="titleUpdate" class="form-control" value="${data.title}"><br><lable for="Data">Author:</label><input type="text" id="authorUpdate" class="form-control" value="${data.author}"><br><lable for="Data">Genre:</label><input type="text" id="genreUpdate" class="form-control" value="${data.genre}"><br><lable for="Data">ISBN:</label><input type="text" id="isbnUpdate" class="form-control" value="${data.isbn}"><br><lable for="Data">Year:</label><input type="text" id="yearUpdate" class="form-control" value="${data.year}"><br><lable for="Data">Synopsis:</label><input type="text" id="synopsisUpdate" class="form-control" value="${data.synopsis}"><br><lable for="Data">Copies Available:</label><input type="text" id="copiesAvailableUpdate" class="form-control" value="${data.copiesAvailable}"><br><button type="button" class="btn btn-primary" onclick="updateBook()">Update Book</button></div>`;
+  li.innerHTML = `<div class="form-group">
+                    <label for="Data">Title:</label>
+                    <input type="text" id="titleUpdate" class="form-control" value="${data.title}">
+                    <br>
+                    <lable for="Data">Author:</label>
+                    <input type="text" id="authorUpdate" class="form-control" value="${data.author}">
+                    <br>
+                    <lable for="Data">Genre:</label>
+                    <input type="text" id="genreUpdate" class="form-control" value="${data.genre}">
+                    <br>
+                    <lable for="Data">ISBN:</label>
+                    <input type="text" id="isbnUpdate" class="form-control" value="${data.isbn}">
+                    <br>
+                    <lable for="Data">Year:</label>
+                    <input type="text" id="yearUpdate" class="form-control" value="${data.year}">
+                    <br>
+                    <lable for="Data">Synopsis:</label>
+                    <input type="text" id="synopsisUpdate" class="form-control" value="${data.synopsis}">
+                    <br>
+                    <lable for="Data">Copies Available:</label>
+                    <input type="text" id="copiesAvailableUpdate" class="form-control" value="${data.copiesAvailable}">
+                    <br>
+                    <button type="button" class="btn btn-primary" onclick="updateBook()">Update Book</button>
+                  </div>`;
   return li;
 };
 
@@ -333,6 +407,98 @@ const updatesearch = () => {
       }
       return response;
     })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
+
+const register = async () => {
+  const fname = document.getElementById('fname').value;
+  const mname = document.getElementById('mname').value;
+  const lname = document.getElementById('lname').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const password = document.getElementById('password').value;
+  const repassword = document.getElementById('repassword').value;
+
+  if (!fname || !lname || !email || !password || !repassword) {
+    alert('Please enter all the user details.');
+  }
+  const jsonData = {
+    fname,
+    mname,
+    lname,
+    email,
+    phone,
+    password,
+    repassword
+  };
+  fetchRequest('register', 'POST', jsonData)
+    .then((response) => {
+      if (response.status === 201) {
+        displaySuccess('register', response.message);
+        displayFormInputSuccess('registration');
+        console.log(response.message);
+      }
+      if (response.status === 409) {
+        displayError('register', response.message);
+        displayFormInput('registration');
+        console.log('Error: ' + response.message);
+      }
+      setTimeout(() => {
+        window.location.href = '/frontend/register.html';
+      }, 500);
+      return response;
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+};
+
+const Details = (id, message) => {
+  const info = document.getElementById(id);
+  info.innerHTML = message
+}
+
+
+const login = async () => {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  if (!username) {
+    alert('Please Enter Username.');
+  }
+
+  if (!password) {
+    alert('Please Enter Password.');
+  }
+
+  const jsonData = {
+    username,
+    password
+  };
+  await fetchRequest('login', 'POST', jsonData)
+    .then((response) => {
+      if (response.status === 200) {
+        localStorage.setItem('token', response.token);
+        window.location.href = '/user';
+      }
+    })
+    .catch((error) => {
+      createLi('danger', error.message)
+      console.error('Error:', error);
+    });
+};
+
+const logout = async () => {
+  await fetchRequest('logout', 'GET')
+    .then((response) => {
+      if (response) {
+        window.location.href = 'http://127.0.0.1:5500/frontend/login.html';
+      }
+      return response;
+    }
+    )
     .catch((error) => {
       console.error('Error:', error);
     });

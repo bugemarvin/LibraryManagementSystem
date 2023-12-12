@@ -1,23 +1,25 @@
 from models.user import db
 from flask import jsonify
 
-
 class Book(db.Model):
     """
     Represents a book in the library management system.
     """
-
     __tablename__ = 'book'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(255), nullable=False)
     author = db.Column(db.String(255), nullable=False)
     genre = db.Column(db.String(255), nullable=False)
-    isbn = db.Column(db.String(20), unique=True, nullable=False)
+    isbn = db.Column(db.String(255), unique=True, nullable=False)
     year = db.Column(db.Integer)
     synopsis = db.Column(db.Text)
     copiesAvailable = db.Column(db.Integer)
     dateAdded = db.Column(db.DateTime)
     dateModified = db.Column(db.DateTime)
+    # createdByUser = db.Column(db.String(255), nullable=False, server_default='', default=0)
+    # createdByUserRole = db.Column(db.String(255), nullable=True, default=0)
+    # modifiedBy = db.Column(db.String(255), nullable=True, default=0)
+    # modifiedByUserRole = db.Column(db.String(255), nullable=True, default=0)
 
     def __init__(self, title, author, genre, isbn, year, synopsis, copiesAvailable, dateAdded, dateModified):
         """
@@ -43,6 +45,10 @@ class Book(db.Model):
         self.copiesAvailable = copiesAvailable
         self.dateAdded = dateAdded
         self.dateModified = dateModified
+        # self.createdBy = createdBy
+        # self.createdByUserRole = createdByUserRole
+        # self.modifiedBy = modifiedBy
+        # self.modifiedByUserRole = modifiedByUserRole
 
     def to_json(self):
         """

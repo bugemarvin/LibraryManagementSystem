@@ -24,13 +24,19 @@ Welcome to our Library Management System API Web Application! This web applicati
         - [Welcome](#welcome)
         - [Status](#status)
         - [Statistics](#statistics)
-        - [Add a Book](#add-a-book)
-        - [Delete a Book](#delete-a-book)
-        - [Search Books](#search-books)
-        - [List All Books](#list-all-books)
-        - [List Books by Category](#list-books-by-category)
-        - [Update a Book](#update-a-book)
-        - [Error Handling](#error-handling)
+        - [Book Endpoints](#book-endpoints)
+          - [Add a Book](#add-a-book)
+          - [Delete a Book](#delete-a-book)
+          - [Search Books](#search-books)
+          - [List All Books](#list-all-books)
+          - [List Books by Category](#list-books-by-category)
+          - [Update a Book](#update-a-book)
+        - [User Endpoints](#user-endpoints)
+          - [Error Handling](#error-handling)
+        - [User Endpoints](#user-endpoints)
+          - [Add User](#add-user)
+          - [Login User](#login-user)
+          - [Logout User](#logout-user)
 - [Frontend](#frontend)
   - [Documentation](#documentation-1)
     - [fetchRequest Function](#fetchrequest-function)
@@ -225,6 +231,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 }
 ```
 
+
+## Book Endpoints
 ### Add a Book
 * **Route**: `/api/v1/insert`
 * **Method**: `POST`
@@ -385,6 +393,8 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 }
 ```
 
+## Error Endpoints
+
 ### Error Handling
 * **Description**: *404 Not Found*
 ```json
@@ -395,9 +405,84 @@ The application will be accessible at http://127.0.0.1:5000/ by default.
 }
 ```
 
+## User Endpoints
+
+### Add User
+* **Route**: `/api/v1/register`
+* **Method**: `POST`
+* **Description**: *Adds a user to the database.*
+#### Example Request:
+```json
+{
+		"confirmed": false,
+		"confirmedOn": "Tue, 12 Dec 2023 14:22:36 GMT",
+		"dateCreated": "Sun, 10 Dec 2023 10:53:06 GMT",
+		"dateModified": "Tue, 12 Dec 2023 14:22:36 GMT",
+		"emailAddress": "xxxx@xxx.com",
+		"firstName": "Jhon",
+		"id": "692d0248fe3f40dda061e34f45e41b04",
+		"lastName": "Doe",
+		"location": "",
+		"middleName": "B",
+		"phoneNumber": "000-0XX-XXX-XXX",
+		"photos": null,
+		"role": "user",
+		"status": "inactive",
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDI0NzczNTgsImlhdCI6MTcwMjM5MDk1OCwic3ViIjoiYnVnZW1hcnZpbkBvdXRsb29rLmNvbSJ9.mJp0HLS-u66s672qDGZmxjZmkiV92Ld-nRPoxZomnis"
+	}
+```
+#### Example Response:
+```json
+
+    {
+      "success": true,
+      "status": 201,
+      "message": "User created successfully"
+    }
+```
+
+### Login User
+* **Route**: `/api/v1/login`
+* **Method**: `GET`
+* **Description**: *Login a user*
+```http
+Authorization: Bearer <token>
+```
+#### Example Request:
+```json
+{
+  "username": "emailAddress" or "phoneNumber",
+  "password": "password"
+}
+```
+
+### Example Response
+```json
+{
+  "sucess": true,
+  "status": 200,
+  "message": "User logged in successfully",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDI0NzczNTgsImlhdCI6MTcwMjM5MDk1OCwic3ViIjoiYnVnZW1hcnZpbkBvdXRsb29rLmNvbSJ9.mJp0HLS-u66s672qDGZmxjZmkiV92Ld-nRPoxZomnis"
+}
+```
+
+### Logout User
+* **Route**: `/api/v1/logout`
+* **Method**: `GET`
+* **Description**: *Login a user*
+
+### Example Response
+```json
+{
+  "sucess": true,
+  "status": 200,
+  "message": "User logged out successfully",
+}
+```
+
 # Frontend
 
-The frontend of the application is built using HTML, CSS, and JavaScript. The frontend code is designed to interact with the Flask server, making fetch requests to the API endpoints to perform various operations on the library database. The frontend code also provides functions to display the results of the fetch requests in the browser.
+The frontend of the application is built using HTML, CSS, and JavaScript. The frontend code is designed to test and interact with the backend API from the Flask server, making fetch requests to the API endpoints to perform various operations on the library database. The frontend code also provides functions to display the results of the fetch requests in the browser.
 
 ## Documentation
 
