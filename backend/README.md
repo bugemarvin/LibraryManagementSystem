@@ -334,7 +334,7 @@ Authorization: Bearer <token>
 #### Example Request:
 ```json
 {
-  "username": "emailAddress" or "phoneNumber",
+  "username": "emailAddress | phoneNumber",
   "password": "password"
 }
 ```
